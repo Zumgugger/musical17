@@ -42,5 +42,6 @@ gem 'spring',        group: :development
 gem 'rails_12factor', group: :production
 
 gem 'best_in_place'
+gem 'annotate'
 
 ruby "2.1.4"

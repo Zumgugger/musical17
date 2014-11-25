@@ -1,0 +1,47 @@
+<div class="departments index">
+  <h2>Ressorts</h2>
+
+   <table class="listing" summary="department list">
+    <thead class="header">
+      <th><%= link_to "Ressort" %></th>
+      <th><%= link_to "Übergeordnetes Ressort" %></th>
+      <th><%= link_to "Unterressorts" %></th>
+      <th>Löschen</th>
+    </thead>
+    <% @departments.each do |department| %>
+    
+   <% if false %>
+
+    <tr>
+			<td>
+				<%= link_to department_path(department.id) do  %>
+				<%if department.name%>
+     			<%= department.name %>
+     			<%else%> Neu erstelltes Ressort
+     			<%end %>
+     			<%end %>
+     		</td>
+     		<td>
+
+     		
+      <td><%= 'code fehlt noch' %></td>
+      <td><%= 'code fehlt noch' %></td> 
+      <td class="actions">
+        <%= link_to("Löschen", department_path(department.id), :method => 'delete') %>
+      </td>
+    </tr>
+    <% end %>
+    
+    <%if true %>
+    <tr>
+			<td><%= best_in_place department, :name, :type => :input%></td>
+			<td><%= best_in_place department, :parent_department, :type => :select, :collection => @departments.map%></td>
+			<td><%= best_in_place department, :name %></td>
+			<td><%= link_to "Löschen", department_path(department.id), :method => 'delete'%></td>
+	</tr>
+    
+    <% end %>
+    <% end %>
+  </table>
+  <%= link_to "Neu", departments_path, :method => 'post'%>
+</div>
