@@ -34,8 +34,8 @@
     
     <%if true %>
     <tr>
-			<td><%= best_in_place department, :name, :type => :input%></td>
-			<td><%= best_in_place department, :parent_department, :type => :select, :collection => @departments.map%></td>
+			<td><%= best_in_place department, :name%></td>
+			<td><%= best_in_place department, :parent_department_id, :type => :select, :collection => @names%></td>
 			<td><%= best_in_place department, :name %></td>
 			<td><%= link_to "Löschen", department_path(department.id), :method => 'delete'%></td>
 	</tr>
