@@ -57,7 +57,7 @@ class TeachersController < ApplicationController
   private
 
     def teacher_params
-      params.require(:teacher).permit(:first_name, :last_name, :email, :phone, :phone2, :email_secret, :phone_secret, :phone_secret2)
+      params.require(:teacher).permit(:first_name, :last_name, :email, :phone, :phone2, :email_secret, :phone_secret, :phone_secret2, function_attributes: [:id, :name])
     end #def
     
     def set_teacher
@@ -75,5 +75,7 @@ class TeachersController < ApplicationController
     
     def make_collections
       @teachers = Teacher.order(:last_name)
+      @departments = Department.all
+      @functions = Function.all
     end
 end

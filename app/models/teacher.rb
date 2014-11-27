@@ -22,8 +22,9 @@ class Teacher < ActiveRecord::Base
   
     #has_secure_password
     
-    belongs_to :function
-    has_many :departments, :through => :function
+    has_many :functions
+    has_many :departments, through: :functions
+    accepts_nested_attributes_for :functions
     
     def name
       self.first_name.to_s + ' ' + self.last_name.to_s

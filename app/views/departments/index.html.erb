@@ -1,10 +1,11 @@
 <div class="departments index">
-  <h2>Ressorts</h2>
+  <h2><%= @title %></h2>
 
    <table class="listing" summary="department list">
     <thead class="header">
       <th><%= link_to "Ressort" %></th>
-      <th><%= link_to "Übergeordnetes Ressort" %></th>
+      <th><%= link_to "Leitung" %></th>
+      <th><%= link_to "Gehört zu" %></th>
       <th><%= link_to "Unterressorts" %></th>
       <th>Löschen</th>
     </thead>
@@ -39,6 +40,8 @@
 				<% else %>
 				<%= link_to department.name, department_path(department.id)%>
 				<% end %>
+			<td><%= department.functions %>
+				</td>
 			<td><%= best_in_place department, :parent_department_id, :type => :select, :collection => @parent_departments %></td>
 			<td><% department.subdepartments.each do |s|  %>
 				<%= link_to s.name, department_path(s.id)%><br />

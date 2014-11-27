@@ -1,5 +1,5 @@
 <div class="teachers index">
-  <h2>Ressorts</h2>
+  <h2><%= @title %></h2>
 
    <table class="listing" summary="teacher list">
     <thead class="header">
@@ -44,7 +44,9 @@
 				<% else %>
 				<%= link_to teacher.name, teacher_path(teacher.id)%>
 				<% end %>
-			<td><%= 'Ressort' %></td>
+			<td>"to do"
+		
+			</td>
 			<td><%= best_in_place teacher, :email %></td>
 			<td><%= best_in_place teacher, :email_secret, :type => :checkbox, :collection => ["Nein", "Ja"] %></td>
 			<td><%= best_in_place teacher, :phone %></td>

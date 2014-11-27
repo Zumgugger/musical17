@@ -12,7 +12,9 @@
 
 class Department < ActiveRecord::Base
   
-  has_many :jobs
+  has_many :assignments
+  has_many :functions
+  has_many :teachers, through: :functions
   belongs_to :parent_department,  :class_name => "Department", 
                                   :foreign_key => "parent_department_id"
   
