@@ -20,16 +20,20 @@
 class Teacher < ActiveRecord::Base
   
   
-    has_secure_password
+    #has_secure_password
     
     belongs_to :function
+    has_many :departments, :through => :function
     
+    def name
+      self.first_name.to_s + ' ' + self.last_name.to_s
+    end
     
-    validates_presence_of :first_name
+    validates_presence_of :name
     
-    EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9._%+-]+\.[a-z]{2,4}\Z/i
-    validates :email, :presence => true,
-                    :length => {:maximum => 100},
-                    :format => {:with => EMAIL_REGEX},
-                    :confirmation => true
+    #EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9._%+-]+\.[a-z]{2,4}\Z/i
+    #validates :email, :presence => true,
+    #                :length => {:maximum => 100},
+    #                :format => {:with => EMAIL_REGEX},
+    #                :confirmation => true
 end

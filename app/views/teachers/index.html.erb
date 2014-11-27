@@ -1,2 +1,68 @@
-<h1>Teachers#index</h1>
-<p>Find me in app/views/teachers/index.html.erb</p>
+<div class="teachers index">
+  <h2>Ressorts</h2>
+
+   <table class="listing" summary="teacher list">
+    <thead class="header">
+      <th><%= link_to "Lehrer"%></th>
+      <th><%= link_to "Funktion"%></th>
+      <th><%= link_to "Email" %></th>
+      <th>Geheim?</th>
+      <th>Telefonnummer</th>
+      <th>Geheim?</th>
+      <th>Telefonnummer2</th>
+      <th>Geheim?</th>
+      <th>Löschen</th>
+    </thead>
+    <% @teachers.each do |teacher| %>
+    
+   <% if false %>
+
+    <tr>
+			<td>
+				<%= link_to teacher_path(teacher.id) do  %>
+				<%if teacher.name%>
+     			<%= teacher.name %>
+     			<%else%> Neu erstelltes Ressort
+     			<%end %>
+     			<%end %>
+     		</td>
+     		<td>
+
+     		
+      <td><%= 'code fehlt noch' %></td>
+      <td><%= 'code fehlt noch' %></td> 
+      <td class="actions">
+        <%= link_to("Löschen", teacher_path(teacher.id), :method => 'delete') %>
+      </td>
+    </tr>
+    <% end %>
+    
+    <%if true %>
+    <tr>
+			<td><% if teacher.last_name == '_neuer Lehrer' %>
+				<%= best_in_place teacher, :last_name %>
+				<% else %>
+				<%= link_to teacher.name, teacher_path(teacher.id)%>
+				<% end %>
+			<td><%= 'Ressort' %></td>
+			<td><%= best_in_place teacher, :email %></td>
+			<td><%= best_in_place teacher, :email_secret, :type => :checkbox, :collection => ["Nein", "Ja"] %></td>
+			<td><%= best_in_place teacher, :phone %></td>
+			<td><%= best_in_place teacher, :phone_secret, :type => :checkbox, :collection => ["Nein", "Ja"] %></td>
+			<td><%= best_in_place teacher, :phone2 %></td>
+			<td><%= best_in_place teacher, :phone_secret2, :type => :checkbox, :collection => ["Nein", "Ja"] %></td>						
+			<td><%= link_to "Löschen", teacher_path(teacher.id), :method => 'delete'%></td>
+	</tr>
+    
+    <% end %>
+    <% end %>
+  </table>
+  <%= link_to "Neu", teachers_path, :method => 'post'%>
+  
+  <hr />
+  To do : <br />
+  <ul>
+  	<li>css</li>  
+    <li>Funktion (nach Funktion)</li>
+  </ul>
+</div>
