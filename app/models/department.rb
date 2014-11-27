@@ -13,10 +13,11 @@
 class Department < ActiveRecord::Base
   
   has_many :jobs
-  belongs_to :parent_department, class_name: "Department"
+  belongs_to :parent_department,  :class_name => "Department", 
+                                  :foreign_key => "parent_department_id"
   
-  has_many :subdepartments, class_name: "Department",
-                            foreign_key: "department_id"
+  has_many :subdepartments,       :class_name => "Department",
+                                  :foreign_key => "department_id"
   
   validates_presence_of :name
   

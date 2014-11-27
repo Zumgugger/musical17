@@ -35,7 +35,7 @@
     <%if true %>
     <tr>
 			<td><%= best_in_place department, :name%></td>
-			<td><%= best_in_place department, :parent_department_id, :type => :select, :collection => @names%></td>
+			<td><%= best_in_place department, :parent_department_id, :type => :select, :collection => @parent_departments %></td>
 			<td><%= best_in_place department, :name %></td>
 			<td><%= link_to "Löschen", department_path(department.id), :method => 'delete'%></td>
 	</tr>
@@ -44,4 +44,6 @@
     <% end %>
   </table>
   <%= link_to "Neu", departments_path, :method => 'post'%>
+  
+  <%= params %>
 </div>

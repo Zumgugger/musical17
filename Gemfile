@@ -41,7 +41,7 @@ gem 'spring',        group: :development
 
 gem 'rails_12factor', group: :production
 
-gem 'best_in_place'
+gem 'best_in_place', :git => 'https://github.com/aaronchi/best_in_place.git'
 gem 'annotate'
 
 ruby "2.1.4"
