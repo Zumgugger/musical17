@@ -14,7 +14,7 @@ class DepartmentsController < ApplicationController
   end #new
 
   def create
-    @department = Department.new(:name => 'z new Department z')
+    @department = Department.new(:name => '_neues Ressort')
     respond_to do |format|
       if @department.save
         format.html { redirect_to departments_path, notice: 'Ressort hinzugefügt' }
