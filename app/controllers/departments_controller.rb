@@ -4,7 +4,6 @@ class DepartmentsController < ApplicationController
   def index
     @departments = Department.order(:name)
     make_collections
-    @department = Department.new
    end #index
 
   def show
@@ -46,7 +45,7 @@ class DepartmentsController < ApplicationController
   def destroy
     @department.destroy
     respond_to do |format|
-      format.html { redirect_to actors_url }
+      format.html { redirect_to departments_url }
       format.json { head :no_content }
     end #do
   end #destroy
@@ -70,6 +69,7 @@ class DepartmentsController < ApplicationController
       parent_departments.each do |d|
         @parent_departments << [d.id, d.name]
       end #do
+      @parent_departments << [nil, "---"]
     end #def
 
 end #class
