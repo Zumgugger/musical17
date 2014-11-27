@@ -1,6 +1,8 @@
 class DepartmentsController < ApplicationController
   
   before_action :set_department, only: [:show, :edit, :update, :destroy]
+  before_action :set_title
+  
   def index
     @departments = Department.order(:name)
     make_collections
@@ -63,6 +65,13 @@ class DepartmentsController < ApplicationController
       else @department =Department.new(:name => 'Name', :description => 'Beschreibung')
       end #if
     end #def
+    
+    def set_title
+      if @department
+         @title = 'Ressort ' + @department.name
+      else @title = 'Ressorts'
+      end
+    end
     
     def make_collections
       @departments = Department.order(:name)
