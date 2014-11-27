@@ -7,6 +7,7 @@ class DepartmentsController < ApplicationController
    end #index
 
   def show
+    make_collections
   end #show
 
   def new
@@ -64,9 +65,9 @@ class DepartmentsController < ApplicationController
     end #def
     
     def make_collections
-      parent_departments = Department.all.order(:name)
+      @departments = Department.order(:name)
       @parent_departments = []
-      parent_departments.each do |d|
+      @departments.each do |d|
         @parent_departments << [d.id, d.name]
       end #do
       @parent_departments << [nil, "---"]
