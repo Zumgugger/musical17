@@ -56,15 +56,17 @@ class FunctionsController < ApplicationController
 
     def function_params
       params.require(:function).permit(:id, :name, :teacher_id, :department_id)
-    end #def
+    end #function_params
     
     def set_function
       if @function = Function.find(params[:id])
       else @function =Function.new(:name => 'Name')
       end #if
-    end #def
+    end #set_funciton
         
     def make_collections
       @functions = Function.order(:name)
-    end #def
+    end #make_collections
+    
 end #class
+

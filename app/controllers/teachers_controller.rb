@@ -57,14 +57,17 @@ class TeachersController < ApplicationController
   private
 
     def teacher_params
-      params.require(:teacher).permit(:first_name, :last_name, :email, :phone, :phone2, :email_secret, :phone_secret, :phone_secret2, function_attributes: [:id, :name])
-    end #def
+      params.require(:teacher).permit(:first_name, :last_name, :email, :phone, :phone2, 
+                                      :email_secret, :phone_secret, :phone_secret2,
+                                      :token, :description,
+                                      function_attributes: [:id, :name])
+    end #teacher_params
     
     def set_teacher
       if @teacher = Teacher.find(params[:id])
       else @teacher =Teacher.new(:name => 'Name', :description => 'Beschreibung')
       end #if
-    end #def
+    end #set_teacher
     
     def set_title
       if @teacher
@@ -77,5 +80,6 @@ class TeachersController < ApplicationController
       @teachers = Teacher.order(:last_name)
       @departments = Department.all
       @functions = Function.all
+      @checkbox = ["(wird angezeigt)", "(wird verborgen)"]
     end
 end

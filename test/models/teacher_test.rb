@@ -8,13 +8,15 @@
 #  password_digest :string(255)
 #  email           :string(255)
 #  email_secret    :boolean
-#  phone           :integer
+#  phone           :string(255)
 #  phone_secret    :boolean
 #  phone2          :string(255)
 #  phone_secret2   :boolean
 #  activity        :integer
 #  created_at      :datetime
 #  updated_at      :datetime
+#  token           :string(255)
+#  description     :text
 #
 
 require 'test_helper'

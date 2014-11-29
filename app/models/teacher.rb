@@ -8,13 +8,15 @@
 #  password_digest :string(255)
 #  email           :string(255)
 #  email_secret    :boolean
-#  phone           :integer
+#  phone           :string(255)
 #  phone_secret    :boolean
 #  phone2          :string(255)
 #  phone_secret2   :boolean
 #  activity        :integer
 #  created_at      :datetime
 #  updated_at      :datetime
+#  token           :string(255)
+#  description     :text
 #
 
 class Teacher < ActiveRecord::Base
@@ -31,6 +33,7 @@ class Teacher < ActiveRecord::Base
     end
     
     validates_presence_of :name
+    validates_uniqueness_of :token
     
     #EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9._%+-]+\.[a-z]{2,4}\Z/i
     #validates :email, :presence => true,

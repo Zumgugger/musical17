@@ -3,6 +3,7 @@
 
    <table class="listing" summary="teacher list">
     <thead class="header">
+      <th><%= link_to "  "%></th>
       <th><%= link_to "Lehrer"%></th>
       <th><%= link_to "Funktion"%></th>
       <th><%= link_to "Email" %></th>
@@ -38,14 +39,15 @@
     <% end %>
     
     <%if true %>
-    <tr>
+    <tr>	<td><%= best_in_place teacher, :token %></td>
 			<td><% if teacher.last_name == '_neuer Lehrer' %>
 				<%= best_in_place teacher, :last_name %>
 				<% else %>
 				<%= link_to teacher.name, teacher_path(teacher.id)%>
 				<% end %>
-			<td>"to do"
-		
+			<td><% teacher.functions.each do |f|%>
+				<%= best_in_place f, :name%> im Ressort <%= link_to f.department.name, department_path(f.department.id) %><br />
+				<% end %>
 			</td>
 			<td><%= best_in_place teacher, :email %></td>
 			<td><%= best_in_place teacher, :email_secret, :type => :checkbox, :collection => ["Nein", "Ja"] %></td>

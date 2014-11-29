@@ -3,16 +3,18 @@
 <h1><%= best_in_place @teacher, :first_name %> <%= best_in_place @teacher, :last_name %></h1>
 
 <h2>Kontaktdaten</h2>
-<%= best_in_place @teacher, :email%>
-<%= best_in_place @teacher, :email_secret, :type => :checkbox, :collection => ["(anzeigen)", "(verbergen)"] %>
+	<%= best_in_place @teacher, :email%>
+	<%= best_in_place @teacher, :email_secret, :type => :checkbox, :collection => @checkbox %>
 <br />
-<%= best_in_place @teacher, :phone %>
-<%= best_in_place @teacher, :phone_secret, :type => :checkbox, :collection => ["(anzeigen)", "(verbergen)"]%>
+	<%= best_in_place @teacher, :phone %>
+	<%= best_in_place @teacher, :phone_secret, :type => :checkbox, :collection => @checkbox%>
 <br />
-<%= best_in_place @teacher, :phone2 %>
-<%= best_in_place @teacher, :phone_secret2, :type => :checkbox, :collection => ["(anzeigen)", "(verbergen)"]%>						
-
-<h2>Funktionen im Musical</h2>
-<% @teacher.functions.each do |f|%>
-	<%=best_in_place f, :name%>
+	<% if @teacher.phone2 %>
+		<%= best_in_place @teacher, :phone2 %>
+		<%= best_in_place @teacher, :phone_secret2, :type => :checkbox, :collection => @checkbox%>						
 	<% end %>
+<h2>Funktionen im Musical</h2>
+	<% @teacher.functions.each do |f|%>
+		<%= best_in_place f, :name%> im Ressort <%= best_in_place f.department, :name %><br />
+	<% end %>
+	

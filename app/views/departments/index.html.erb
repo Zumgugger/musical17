@@ -40,7 +40,9 @@
 				<% else %>
 				<%= link_to department.name, department_path(department.id)%>
 				<% end %>
-			<td><%= department.functions %>
+			<td><% department.functions.each do |f| %>
+				<%= link_to f.teacher.name, teacher_path(f.teacher.id) %>
+				<% end %>
 				</td>
 			<td><%= best_in_place department, :parent_department_id, :type => :select, :collection => @parent_departments %></td>
 			<td><% department.subdepartments.each do |s|  %>
@@ -59,8 +61,7 @@
   To do : <br />
   <ul>
   	<li>Spalte Ressortleiter als Link, evlt mit Telefonnummer</li>
-  	<li>Spalte Mitarbeiter als Link</li>
-  	<li>Tabelsorter</li>
+
   	<li>css</li>  	
   </ul>
 </div>
