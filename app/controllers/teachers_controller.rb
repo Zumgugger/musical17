@@ -17,7 +17,7 @@ class TeachersController < ApplicationController
   end #new
 
   def create
-    @teacher = Teacher.new(:last_name => '_neuer Lehrer')
+    @teacher = Teacher.new(:last_name => '_Nachname', :first_name => '_Vorname')
     respond_to do |format|
       if @teacher.save
         format.html { redirect_to teachers_path, notice: 'Lehrer hinzugefügt' }
@@ -71,7 +71,7 @@ class TeachersController < ApplicationController
     
     def set_title
       if @teacher
-         @title = @teacher.first_name + @teacher.last_name
+         @title = @teacher.first_name + @teacher.last_name || 'Lehrer'
       else @title = 'Lehrer'
       end
     end

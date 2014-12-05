@@ -40,8 +40,9 @@
     
     <%if true %>
     <tr>	<td><%= best_in_place teacher, :token %></td>
-			<td><% if teacher.last_name == '_neuer Lehrer' %>
+			<td><% if teacher.last_name == '_Nachname' %>
 				<%= best_in_place teacher, :last_name %>
+				<%= best_in_place teacher, :first_name %>
 				<% else %>
 				<%= link_to teacher.name, teacher_path(teacher.id)%>
 				<% end %>
