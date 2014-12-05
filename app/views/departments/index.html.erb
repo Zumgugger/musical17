@@ -7,35 +7,15 @@
       <th><%= link_to "Leitung" %></th>
       <th><%= link_to "Gehört zu" %></th>
       <th><%= link_to "Unterressorts" %></th>
+      <%if admin? %>     
       <th>Löschen</th>
+      <% end %>
     </thead>
     <% @departments.each do |department| %>
     
-   <% if false %>
-
-    <tr>
-			<td>
-				<%= link_to department_path(department.id) do  %>
-				<%if department.name%>
-     			<%= department.name %>
-     			<%else%> Neu erstelltes Ressort
-     			<%end %>
-     			<%end %>
-     		</td>
-     		<td>
-
-     		
-      <td><%= 'code fehlt noch' %></td>
-      <td><%= 'code fehlt noch' %></td> 
-      <td class="actions">
-        <%= link_to("Löschen", department_path(department.id), :method => 'delete') %>
-      </td>
-    </tr>
-    <% end %>
-    
     <%if true %>
     <tr>
-			<td><% if department.name == '_neues Ressort' %>
+			<td><% if department.name == '_neues Ressort' && admin%>
 				<%= best_in_place department, :name %>
 				<% else %>
 				<%= link_to department.name, department_path(department.id)%>
@@ -44,24 +24,27 @@
 				<%= link_to f.teacher.name, teacher_path(f.teacher.id) %>
 				<% end %>
 				</td>
-			<td><%= best_in_place department, :parent_department_id, :type => :select, :collection => @parent_departments %></td>
+			<td><% if admin? %>
+				<%= best_in_place department, :parent_department_id, :type => :select, :collection => @parent_departments %></td>
+				<% elsif department.parent_department %>			
+				<%= link_to department.parent_department.name, department_path(department.parent_department_id)%><br />
+				<% else %>
+				---
+			    <% end %>
 			<td><% department.subdepartments.each do |s|  %>
 				<%= link_to s.name, department_path(s.id)%><br />
 			    <% end %>
 			</td>
-			<td><%= link_to "Löschen", department_path(department.id), :method => 'delete'%></td>
+			<td><% if admin? %>
+				<%= link_to "Löschen", department_path(department.id), :method => 'delete'%></td>
+				<% end %>	
 	</tr>
     
     <% end %>
     <% end %>
   </table>
-  <%= link_to "Neu", departments_path, :method => 'post'%>
   
-  <hr />
-  To do : <br />
-  <ul>
-  	<li>Spalte Ressortleiter als Link, evlt mit Telefonnummer</li>
-
-  	<li>css</li>  	
-  </ul>
+  <% if admin? %>
+  <%= link_to "Neu", departments_path, :method => 'post'%>
+  <% end %>
 </div>
