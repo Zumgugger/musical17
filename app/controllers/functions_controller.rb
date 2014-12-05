@@ -1,5 +1,6 @@
 class FunctionsController < ApplicationController
   before_action :set_function, only: [:show, :edit, :update, :destroy]
+  before_action :set_title
   
   def index
     @functions = Function.order(:name)
@@ -65,8 +66,8 @@ class FunctionsController < ApplicationController
     end #set_funciton
     
     def set_title
-      if @funciton
-         @title = @funciton.name
+      if @function
+         @title = @function.name
       else @title = 'Funktionen'
       end #if
     end #set_title

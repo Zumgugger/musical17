@@ -1,0 +1,13 @@
+<nav>
+	<ul>
+		<li><%= link_to "Organigramm", root_path %></li>
+		<li><%= link_to "Lehrer", teachers_path %></li>
+		<li><%= link_to "Ressorts", departments_path %></li>
+    <% if current_user.nil? %>
+        <li><%= link_to "Login", new_session_path %></li>
+    <% else %>
+        Eingeloggt als <%= current_user.name %>.
+        <li><%= link_to "Logout", session_path( session ), :method => :delete %></li>
+    <% end %>
+	</ul>
+</nav>

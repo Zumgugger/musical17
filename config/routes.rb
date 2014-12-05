@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get 'main/index'
 
-resources :departments, :teachers, :functions, :assignments
+resources :departments, :teachers, :functions, :assignments, :sessions
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
