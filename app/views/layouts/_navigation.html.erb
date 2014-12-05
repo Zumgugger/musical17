@@ -3,6 +3,10 @@
 		<li><%= link_to "Organigramm", root_path %></li>
 		<li><%= link_to "Lehrer", teachers_path %></li>
 		<li><%= link_to "Ressorts", departments_path %></li>
+	<% if admin? %>
+		<li><%= link_to "Funktionen", functions_path %></li>
+		<li><%= link_to "Jobs", assignments_path %></li>
+	<%end%>
     <% if current_user.nil? %>
         <li><%= link_to "Login", new_session_path %></li>
     <% else %>

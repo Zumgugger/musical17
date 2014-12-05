@@ -8,7 +8,7 @@ module ApplicationHelper
       end
       
       def admin?
-        if @current_user.name == 'Markus Gugger'
+        if current_user && current_user.name == 'Markus Gugger'
           return true
         else
           false
