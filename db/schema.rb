@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129124635) do
+ActiveRecord::Schema.define(version: 20141205191334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20141129124635) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "leader?",       default: true
   end
 
   add_index "functions", ["teacher_id", "department_id"], name: "index_functions_on_teacher_id_and_department_id", using: :btree

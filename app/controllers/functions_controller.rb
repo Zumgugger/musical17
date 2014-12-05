@@ -55,7 +55,7 @@ class FunctionsController < ApplicationController
   private
 
     def function_params
-      params.require(:function).permit(:id, :name, :teacher_id, :department_id)
+      params.require(:function).permit(:id, :name, :teacher_id, :department_id, :leader?)
     end #function_params
     
     def set_function
@@ -63,9 +63,28 @@ class FunctionsController < ApplicationController
       else @function =Function.new(:name => 'Name')
       end #if
     end #set_funciton
+    
+    def set_title
+      if @funciton
+         @title = @funciton.name
+      else @title = 'Funktionen'
+      end #if
+    end #set_title
         
     def make_collections
       @functions = Function.order(:name)
+      departments = Department.all
+      @departments_collection = []
+      departments.each do |d|
+         @departments_collection << [d.id, d.name]
+      end #do
+      @departments_collection << [nil, "noch nicht zugeteilt"]
+      teachers = Teacher.all
+      @teachers_collection = []
+      teachers.each do |t|
+        @teachers_collection << [t.id, t.name]
+      end
+      @teachers_collection << [nil, "noch nicht zugeteilt"]
     end #make_collections
     
 end #class

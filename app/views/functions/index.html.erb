@@ -1,2 +1,46 @@
-<h1>Functions#index</h1>
-<p>Find me in app/views/functions/index.html.erb</p>
+<div class="functions index">
+  <h2><%= @title %></h2>
+
+   <table class="listing" summary="function list">
+    <thead class="header">
+      <th><%= link_to "Funktion"%></th>
+      <th><%= link_to "Ressort"%></th>
+      <th><%= link_to "Lehrer"%></th>
+      <th><%= link_to "Ressortleitung" %></th>
+    </thead>
+    <% @functions.each do |function| %>
+    
+   <% if false %>
+
+    <tr>
+			<td>
+				<%= link_to function_path(function.id) do  %>
+				<%if function.name%>
+     			<%= function.name %>
+     			<%else%> Neu erstelltes Ressort
+     			<%end %>
+     			<%end %>
+     		</td>
+     		<td>
+
+     		
+      <td><%= 'code fehlt noch' %></td>
+      <td><%= 'code fehlt noch' %></td> 
+      <td class="actions">
+        <%= link_to("Löschen", function_path(function.id), :method => 'delete') %>
+      </td>
+    </tr>
+    <% end %>
+    
+    <%if true %>
+    <tr>	<td><%= best_in_place function, :name %></td>
+    	    <td><%= best_in_place function, :department_id, :type => :select, :collection =>  @departments_collection %></td>
+			<td><%= best_in_place function, :teacher_id, :type => :select, :collection => @teachers_collection %></td>
+			<td><%= best_in_place function, :leader?, :type => :checkbox, :collection => ["Nein", "Ja"] %></td>
+	</tr>
+    
+    <% end %>
+    <% end %>
+  </table>
+  <%= link_to "Neu", functions_path, :method => 'post'%>
+</div>

@@ -1,5 +1,6 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
+  before_action :set_title
   
   def index
     @assignments = Assignment.all
@@ -63,6 +64,13 @@ class AssignmentsController < ApplicationController
       else @assignment =Assignment.new
       end #if
     end #set_funciton
+    
+    def set_title
+      if @assignment
+         @title = @assignment.name
+      else @title = 'Pflichtenheft'
+      end
+    end
         
     def make_collections
       @assignments = Assignment.all
