@@ -13,3 +13,99 @@
  *= require_tree .
  *= require_self
  */
+* {
+	font-family: verdana;
+	color:black;
+	text-decoration:none;
+	list-style-type: none;
+}
+
+div article {
+	clear:left;
+	padding-top: 40px;
+}
+
+footer {
+	float:left;
+	clear:both;
+}
+
+.listdiv {
+	clear:none;
+}
+
+.maindiv {
+
+	clear:left;
+	padding-left: 20px;
+}
+.linkdiv {
+	padding:20px;
+	
+}
+
+#logindiv {
+	float:right;
+	clear:none;
+}
+#background {
+	width: 1170px;
+	margin:20px;
+	padding: 20px;
+    border: 10px black solid;
+	border-radius: 20px;
+	background:-moz-linear-gradient(bottom,lightgreen,darkgreen); /* Firefox */
+    background:-webkit-gradient(linear,left top,left bottom,from(lightgreen),to(darkgreen)); /* Chrome, Safari */
+    filter: progid:DXImageTransform.Microsoft.gradient(start
+    Colorstr='glight',endColorstr='darkgreen'); /* Internet Explorer */
+}
+
+.left {
+
+}
+.right {
+	float:right;
+
+}
+
+
+a {
+	text-decoration:none;
+}
+
+
+table, th, td {
+	border-collapse: collapse;
+	border-bottom: 1px black solid;
+	text-align:left;
+}
+
+td , th{
+	padding: 0px 20px 0px 0px;
+}
+
+a:hover, div .linkdiv:hover {
+	background-color: rgba(255, 255, 255, 0.6);
+	border-radius: 10px;
+
+}
+
+textarea {
+	max-width:800px;
+	width: 800px;
+
+}
+
+
+span {
+	max-width:800px;
+}
+
+iframe {
+	border: none;
+}
+
+
+.odd {
+	background-color: rgba(255, 255, 255, 0.1);
+}

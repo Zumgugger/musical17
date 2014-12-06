@@ -1,14 +1,16 @@
-<%= link_to "Zurück zur Liste", departments_path%>
-
-<h1>Ressort <%= best_in_place @department, :name %></h1>
-
-<h2>Übergeordnetes Ressort</h2>
-<%= best_in_place @department, :parent_department_id, :type => :select, :collection => @parent_departments %>
-
-<h2>Unterressorts</h2>
-<% @department.subdepartments.each do |s|  %>
-<%= link_to s.name, department_path(s.id)%><br />
-<% end %>
-
-<h2>Beschrieb</h2>
-<%= best_in_place @department, :description, :type => :textarea %>
+<article>
+	<%= link_to "Zurück zur Liste", departments_path%>
+	
+	<h1>Ressort <%= best_in_place @department, :name %></h1>
+	
+	<h2>Übergeordnetes Ressort</h2>
+	<%= best_in_place @department, :parent_department_id, :type => :select, :collection => @parent_departments %>
+	
+	<h2>Unterressorts</h2>
+	<% @department.subdepartments.each do |s|  %>
+	<%= link_to s.name, department_path(s.id)%><br />
+	<% end %>
+	
+	<h2>Beschrieb</h2>
+	<%= best_in_place @department, :description, :type => :textarea %>
+</article>

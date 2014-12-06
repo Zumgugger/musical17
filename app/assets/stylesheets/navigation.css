@@ -1,0 +1,29 @@
+
+
+nav {
+    height: 50px;
+    width: 90%;
+    float:left;
+    clear: both;
+    margin-left: -40px;
+}
+
+nav ul {
+    width: 100%;
+}
+
+nav ul li {
+	display: inline-block;
+}
+
+nav ul li a {
+    display:inline-block;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+
+}
+
+
+
+

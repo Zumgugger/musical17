@@ -1,4 +1,6 @@
-<%= link_to "Zurück zur Liste mit dem Lehrkräften", teachers_path%>
+<article>
+
+<%= link_to "<< Zurück zur Liste mit dem Lehrkräften", teachers_path%>
 
 <% if admin? %>
 	<h1><%= best_in_place @teacher, :first_name %> <%= best_in_place @teacher, :last_name %></h1>
@@ -26,3 +28,4 @@
 	<% @teacher.functions.each do |f|%>
 	<%= f.name%> im Ressort <%= link_to f.department.name, departments_path %><br />
 	<% end %>
+<article/>

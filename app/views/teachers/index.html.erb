@@ -1,16 +1,14 @@
-<div class="teachers index">
+<article class="teachers index">
   <h2><%= @title %></h2>
 
    <table class="listing" summary="teacher list">
     <thead class="header">
       <th><%= link_to "  "%></th>
       <th><%= link_to "Lehrer"%></th>
-      <th><%= link_to "Funktion"%></th>
+      <th><%= link_to "Funktionen"%></th>
       <th><%= link_to "Email" %></th>
       <th>Geheim?</th>
       <th>Telefonnummer</th>
-      <th>Geheim?</th>
-      <th>Telefonnummer2</th>
       <th>Geheim?</th>
       <th>Löschen</th>
     </thead>
@@ -55,8 +53,6 @@
 			<td><%= best_in_place teacher, :email_secret, :type => :checkbox, :collection => ["Nein", "Ja"] %></td>
 			<td><%= best_in_place teacher, :phone %></td>
 			<td><%= best_in_place teacher, :phone_secret, :type => :checkbox, :collection => ["Nein", "Ja"] %></td>
-			<td><%= best_in_place teacher, :phone2 %></td>
-			<td><%= best_in_place teacher, :phone_secret2, :type => :checkbox, :collection => ["Nein", "Ja"] %></td>						
 			<td><%= link_to "Löschen", teacher_path(teacher.id), :method => 'delete'%></td>
 	</tr>
     
@@ -64,4 +60,4 @@
     <% end %>
   </table>
   <%= link_to "Neu", teachers_path, :method => 'post'%>
-  
+</article>  

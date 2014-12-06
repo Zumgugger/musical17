@@ -1,4 +1,4 @@
-<div class="departments index">
+<article class="departments index">
   <h2><%= @title %></h2>
 
    <table class="listing" summary="department list">
@@ -47,4 +47,4 @@
   <% if admin? %>
   <%= link_to "Neu", departments_path, :method => 'post'%>
   <% end %>
-</div>
+</article>
