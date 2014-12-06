@@ -39,7 +39,8 @@
     <% end %>
     
     <%if true %>
-    <tr>	<td><%= best_in_place teacher, :token %></td>
+    <tr class=<%= cycle('odd', 'even')%>>	
+    		<td><%= best_in_place teacher, :token %></td>
 			<td><% if teacher.last_name == '_Nachname' %>
 				<%= best_in_place teacher, :last_name %>
 				<%= best_in_place teacher, :first_name %>
@@ -64,10 +65,3 @@
   </table>
   <%= link_to "Neu", teachers_path, :method => 'post'%>
   
-  <hr />
-  To do : <br />
-  <ul>
-  	<li>css</li>  
-    <li>Funktion (nach Funktion)</li>
-  </ul>
-</div>
