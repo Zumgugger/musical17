@@ -15,7 +15,7 @@
     
     <%if true %>
     <tr class=<%= cycle('odd', 'even')%>>
-			<td><% if department.name == '_neues Ressort' && admin%>
+			<td><% if department.name == '_neues Ressort' && admin?%>
 				<%= best_in_place department, :name %>
 				<% else %>
 				<%= link_to department.name, department_path(department.id)%>
