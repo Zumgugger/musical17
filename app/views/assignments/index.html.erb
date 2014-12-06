@@ -11,7 +11,8 @@
     </thead>
     <% @assignments.each do |assignment| %>
     
-      <tr>	<td><% if assignment.name %>
+      <tr class=<%= cycle('odd', 'even')%>>
+      		<td><% if assignment.name %>
       			<%= link_to assignment.name, assignment_path(assignment.id)%>
       			<%else%>
       			<%= best_in_place assignment, :name%>

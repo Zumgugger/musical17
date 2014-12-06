@@ -11,7 +11,8 @@
     </thead>
     
     <% @functions.each do |function| %>
-    <tr>	<td><%= best_in_place_if admin?, function, :name %></td>
+    <tr class=<%= cycle('odd', 'even')%>>	
+    		<td><%= best_in_place_if admin?, function, :name %></td>
     	    <td><%= best_in_place function, :department_id, :type => :select, :collection =>  @departments_collection %></td>
 			<td><%= best_in_place function, :teacher_id, :type => :select, :collection => @teachers_collection %></td>
 			<td><%= best_in_place function, :leader?, :type => :checkbox, :collection => ["Nein", "Ja"] %></td>

@@ -14,7 +14,7 @@
     <% @departments.each do |department| %>
     
     <%if true %>
-    <tr>
+    <tr class=<%= cycle('odd', 'even')%>>
 			<td><% if department.name == '_neues Ressort' && admin%>
 				<%= best_in_place department, :name %>
 				<% else %>
