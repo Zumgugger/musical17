@@ -1,5 +1,5 @@
-<div id='login'> 
-	 <h1>Login</h1>
+<article id='login'> 
+	 <h1><%= @title %></h1>
   <%= form_tag sessions_path do %>
     <div class="field">
       <%= label_tag :email %>
@@ -11,4 +11,4 @@
     </div>
     <div class="actions"><%= submit_tag "Log in" %></div>
   <% end %>
-</div>
+</article>

@@ -75,6 +75,7 @@ class DepartmentsController < ApplicationController
     
     def make_collections
       @departments = Department.order(:name)
+      @teachers = Teacher.all
       @parent_departments = []
       @departments.each do |d|
         @parent_departments << [d.id, d.name]

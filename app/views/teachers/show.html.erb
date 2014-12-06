@@ -26,6 +26,6 @@
 
 <h2><%= link_to_if admin?, "Funktionen", functions_path%> im Musical</h2>
 	<% @teacher.functions.each do |f|%>
-	<%= f.name%> im Ressort <%= link_to f.department.name, departments_path %><br />
+	<%= f.name%> im Ressort <%= link_to f.department.name, department_path(f.department.id)%><br />
 	<% end %>
 <article/>

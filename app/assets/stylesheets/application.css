@@ -20,6 +20,10 @@
 	list-style-type: none;
 }
 
+html {
+	background-image: url(musical-instruments.jpg)
+}
+
 div article {
 	clear:left;
 	padding-top: 40px;
@@ -49,7 +53,7 @@ footer {
 	clear:none;
 }
 #background {
-	width: 1170px;
+	max-width: 1200px;
 	margin:20px;
 	padding: 20px;
     border: 10px black solid;
@@ -78,6 +82,12 @@ table, th, td {
 	border-collapse: collapse;
 	border-bottom: 1px black solid;
 	text-align:left;
+}
+
+table {
+	width: 100%;
+	word-break: break-all;
+	overflow: hidden;
 }
 
 td , th{

@@ -1,7 +1,13 @@
 <article>
-	<%= link_to "Zurück zur Liste", departments_path%>
+	<%= link_to "<< Zurück zur Liste mit den Ressorts", departments_path%>
 	
-	<h1>Ressort <%= best_in_place @department, :name %></h1>
+	
+	<% if admin? %>
+	<h1><%= best_in_place @department, :name %> (
+		<% @department.teachers.each do |t|%>
+		<%= link_to t.name, teacher_path(t.id) %> 
+		<% end %>)
+		</h1>
 	
 	<h2>Übergeordnetes Ressort</h2>
 	<%= best_in_place @department, :parent_department_id, :type => :select, :collection => @parent_departments %>
@@ -10,7 +16,27 @@
 	<% @department.subdepartments.each do |s|  %>
 	<%= link_to s.name, department_path(s.id)%><br />
 	<% end %>
-	
 	<h2>Beschrieb</h2>
 	<%= best_in_place @department, :description, :type => :textarea %>
+	<% end %>
+	
+	<% unless admin? %>
+	<h1><%= @department.name %> (
+		<% @department.teachers.each do |t|%>
+		<%= link_to t.name, teacher_path(t.id) %> 
+		<% end %>)
+	</h1>
+	<%if @department.parent_department %>
+	<h2>Übergeordnetes Ressort</h2>
+	<%= link_to @department.parent_department.name, department_path(@department.parent_department.id)%>
+	<% end %>
+	<%if !@department.subdepartments.empty? %>
+	<h2>Unterressorts</h2>
+	<% @department.subdepartments.each do |s|  %>
+	<%= link_to s.name, department_path(s.id)%><br />
+	<% end %>
+	<% end %>
+	<h2>Beschrieb</h2>
+	<%= best_in_place @department, :description, :type => :textarea %>
+	<% end %>
 </article>

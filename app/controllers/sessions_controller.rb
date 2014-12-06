@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  
+  before_action :set_title
+  
      def new
        session[:return_to] ||= request.referer
      end
@@ -20,4 +23,10 @@ class SessionsController < ApplicationController
        session[:user_id] = nil
        redirect_to session[:return_to], :notice => "Logged out!"
      end #destroy
+     
+  private
+  
+    def set_title
+      @title = "Login"
+    end
 end #class 

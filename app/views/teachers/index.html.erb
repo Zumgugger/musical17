@@ -3,40 +3,52 @@
 
    <table class="listing" summary="teacher list">
     <thead class="header">
-      <th><%= link_to "  "%></th>
+      <th><%= link_to "Kürz"%></th>
       <th><%= link_to "Lehrer"%></th>
       <th><%= link_to "Funktionen"%></th>
       <th><%= link_to "Email" %></th>
-      <th>Geheim?</th>
+      <% if admin? %><th>Geheim?</th> <% end %>
       <th>Telefonnummer</th>
-      <th>Geheim?</th>
+      <% if admin? %><th>Geheim?</th>
       <th>Löschen</th>
+      <% end %>
     </thead>
     <% @teachers.each do |teacher| %>
     
-   <% if false %>
+   <% unless admin? %>
 
     <tr class=<%= cycle('odd', 'even')%>>
+			<td><%= link_to teacher.token, teacher_path(teacher.id) %></td>
 			<td>
 				<%= link_to teacher_path(teacher.id) do  %>
 				<%if teacher.name%>
      			<%= teacher.name %>
-     			<%else%> Neu erstelltes Ressort
+     			<%else%> Neu erstellter Lehrer
      			<%end %>
      			<%end %>
      		</td>
-     		<td>
-
-     		
-      <td><%= 'code fehlt noch' %></td>
-      <td><%= 'code fehlt noch' %></td> 
-      <td class="actions">
-        <%= link_to("Löschen", teacher_path(teacher.id), :method => 'delete') %>
-      </td>
+     		<td><% teacher.functions.each do |f|%>
+				<%= f.name%> im Ressort <%= link_to f.department.name, department_path(f.department.id) %><br />
+			<% end %>
+			</td>
+			<td>
+     		<% if !teacher.email_secret && teacher.email%>
+			<%= teacher.email %>
+			<% end %>
+			</td>
+			<td>
+     		<% if !teacher.phone_secret && teacher.phone%>
+			<%= teacher.phone %>
+			<% end %>
+			</td>
+     		<td><% if !teacher.phone_secret2 && teacher.phone2 %>
+			<%= teacher.phone %>
+			<% end %>
+			</td>			
     </tr>
     <% end %>
     
-    <%if true %>
+    <%if admin? %>
     <tr class=<%= cycle('odd', 'even')%>>	
     		<td><%= best_in_place teacher, :token %></td>
 			<td><% if teacher.last_name == '_Nachname' %>
@@ -59,5 +71,7 @@
     <% end %>
     <% end %>
   </table>
+  <% if admin? %>
   <%= link_to "Neu", teachers_path, :method => 'post'%>
+  <% end %>
 </article>  
