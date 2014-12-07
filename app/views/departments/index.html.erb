@@ -13,7 +13,6 @@
     </thead>
     <% @departments.each do |department| %>
     
-    <%if true %>
     <tr class=<%= cycle('odd', 'even')%>>
 			<td><% if department.name == '_neues Ressort' && admin?%>
 				<%= best_in_place department, :name %>
@@ -39,8 +38,6 @@
 				<%= link_to "Löschen", department_path(department.id), :method => 'delete'%></td>
 				<% end %>	
 	</tr>
-    
-    <% end %>
     <% end %>
   </table>
   

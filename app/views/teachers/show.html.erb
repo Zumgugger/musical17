@@ -15,12 +15,15 @@
 	<% if @teacher.phone2 %>
 	<%= best_in_place @teacher, :phone_secret2, :type => :checkbox, :collection => @checkbox%>						
 	<% end %>
-<% else %>
+<% end  %>
+
+<% unless admin? %>
 	<h1><%= @teacher.name%></h1>
 	<h2>Kontaktdaten</h2>
 	<%= !@teacher.email_secret? && @teacher.email ? @teacher.email : "" %>
 	<br />
 	<%= !@teacher.phone_secret? && @teacher.phone ? @teacher.phone : "" %>
+	<br />
 	<%= !@teacher.phone_secret2? && @teacher.phone2 ? @teacher.phone2 : "" %>
 <% end %>
 

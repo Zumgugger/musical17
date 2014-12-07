@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205191334) do
+ActiveRecord::Schema.define(version: 20141207131506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20141205191334) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.boolean  "competence?",     default: true
+    t.datetime "deadline"
+    t.boolean  "responsibility?", default: true
   end
 
   add_index "assignments", ["department_id"], name: "index_assignments_on_department_id", using: :btree
@@ -32,6 +35,8 @@ ActiveRecord::Schema.define(version: 20141205191334) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "parent_department_id"
+    t.string   "category"
+    t.text     "notes"
   end
 
   add_index "departments", ["name"], name: "index_departments_on_name", using: :btree

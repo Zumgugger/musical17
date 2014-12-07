@@ -57,7 +57,7 @@ class DepartmentsController < ApplicationController
   private
 
     def department_params
-      params.require(:department).permit(:parent_department_id, :name, :description)
+      params.require(:department).permit(:parent_department_id, :name, :description, :category, :notes)
     end #def
     
     def set_department
@@ -81,6 +81,12 @@ class DepartmentsController < ApplicationController
         @parent_departments << [d.id, d.name]
       end #do
       @parent_departments << [nil, "---"]
+      @responsibilites = []
+      @competences = []
+      Assignment.all.each do |a|
+        @responsibilites << a if a.responsibility? == true
+        @competences << a if a.competence? == true
+      end #do 
     end #def
 
 end #class

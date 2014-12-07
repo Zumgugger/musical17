@@ -56,7 +56,7 @@ class AssignmentsController < ApplicationController
   private
 
     def assignment_params
-      params.require(:assignment).permit(:name, :text, :department_id)
+      params.require(:assignment).permit(:name, :text, :department_id, :responsibility?, :competence?, :deadline)
     end #assignment_params
     
     def set_assignment
@@ -68,7 +68,7 @@ class AssignmentsController < ApplicationController
     def set_title
       if @assignment
          @title = @assignment.name
-      else @title = 'Pflichtenheft'
+      else @title = 'Aufgaben'
       end
     end
         
@@ -80,6 +80,7 @@ class AssignmentsController < ApplicationController
          @collection << [d.id, d.name]
       end #do
       @collection << [nil, "noch nicht zugeteilt"]
+      @checkbox = ["Nein", "Ja"]
     end #make_collections
     
 end #class

@@ -3,11 +3,15 @@
 	
 	
 	<% if admin? %>
+	
 	<h1><%= best_in_place @department, :name %> (
 		<% @department.teachers.each do |t|%>
 		<%= link_to t.name, teacher_path(t.id) %> 
 		<% end %>)
 		</h1>
+		
+	<h2>Kategorie: 
+		<%=best_in_place @department, :category %></h2>
 	
 	<h2>Übergeordnetes Ressort</h2>
 	<%= best_in_place @department, :parent_department_id, :type => :select, :collection => @parent_departments %>
@@ -16,27 +20,66 @@
 	<% @department.subdepartments.each do |s|  %>
 	<%= link_to s.name, department_path(s.id)%><br />
 	<% end %>
+	
+	<h2>Verantwortlichkeiten</h2>
+	<% @responsibilites.each do |r| %>
+	<%= if r.department == @department then link_to r.text, assignments_path end %>
+	<% end %>
+
+	<h2>Kompetenzen</h2>
+	<% @competences.each do |c| %>
+	<%= if c.department == @department then link_to c.text, assignments_path end %>
+	<% end %>
+	
+	<h2>Notizen (Öffentlich bearbeitbar)</h2>
+	<%= best_in_place @department, :notes, :type => :textarea %>	
+	
 	<h2>Beschrieb</h2>
 	<%= best_in_place @department, :description, :type => :textarea %>
 	<% end %>
 	
+	
+	
+	
 	<% unless admin? %>
+	
 	<h1><%= @department.name %> (
 		<% @department.teachers.each do |t|%>
 		<%= link_to t.name, teacher_path(t.id) %> 
 		<% end %>)
 	</h1>
+	
 	<%if @department.parent_department %>
 	<h2>Übergeordnetes Ressort</h2>
 	<%= link_to @department.parent_department.name, department_path(@department.parent_department.id)%>
 	<% end %>
+	
 	<%if !@department.subdepartments.empty? %>
 	<h2>Unterressorts</h2>
 	<% @department.subdepartments.each do |s|  %>
 	<%= link_to s.name, department_path(s.id)%><br />
 	<% end %>
 	<% end %>
-	<h2>Beschrieb</h2>
-	<%= best_in_place @department, :description, :type => :textarea %>
+	
+	
+	<h2>Verantwortlichkeiten</h2>
+	<table>
+	<% @responsibilites.each do |r| %>
+	<% if r.department == @department %>
+	<tr>
+		<td><%= r.text %></td>
+		<td><%= if r.deadline then r.deadline.day.to_s + ". " + r.deadline.month.to_s + ". " + (r.deadline.year. - 2000).to_s end %></td>
+	</tr>
+	<% end %>
+	<% end %>
+	</table>
+
+	<h2>Kompetenzen</h2>
+	<% @competences.each do |c| %>
+	<%= if c.department == @department then  c.text end %>
+	<% end %>
+	
+	<h2>Notizen</h2>
+	<%= best_in_place @department, :notes, :type => :textarea %>
 	<% end %>
 </article>

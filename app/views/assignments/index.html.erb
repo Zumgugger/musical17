@@ -1,12 +1,17 @@
 <article class="assignments index">
   <h2><%= @title %></h2>
 
+
+<% if admin? %>
    <table class="listing" summary="assignment list">
     <thead class="header">
       <th><%= link_to "Job"%></th>
       <th><%= link_to "Beschrieb" %></th>
       <th><%= link_to "Ressort"%></th>
+      <th><%= link_to "Kompetenz?"%></th>
+      <th><%= link_to "Verantwortung?"%></th>
       <th><%= link_to "Job erstellt am"%></th>
+      <th><%= link_to "Deadline" %></th>
       <th>Löschen</th>
     </thead>
     <% @assignments.each do |assignment| %>
@@ -20,10 +25,19 @@
       		</td>
       		<td><%= best_in_place assignment, :text %></td>
 			<td><%= best_in_place assignment, :department_id, :type => :select, :collection => @collection %></td>
+			<td><%= best_in_place assignment, :competence?, :type => :checkbox, :collection => @checkbox %></td>
+			<td><%= best_in_place assignment, :responsibility?, :type => :checkbox, :collection => @checkbox %></td>
 			<td><%= assignment.created_at.day.to_s  + "." + assignment.created_at.month.to_s + "." + (assignment.created_at.year - 2000).to_s %></td>
+			<td><%= best_in_place assignment, :deadline, :type => :date %></td>			
 			<td><%= link_to "Löschen", assignment_path(assignment.id), :method => 'delete'%></td>
 	 </tr>  
      <% end %>
   </table>
   <%= link_to "Neu", assignments_path, :method => 'post'%>
+
+<% end %>
+
+<% unless admin? %>
+<p> Diese Seite ist nur zum Administrieren </p>
+<% end %>
 </article>
