@@ -81,7 +81,7 @@
 	<h2>Kompetenzen</h2>
 	<table>
 	<% @competences.each do |c| %>
-	<%= if c.department == @department %>
+	<% if c.department == @department %>
 	<tr>
 		<td><%= c.text %></td>
 		<td><%= if c.deadline then c.deadline.day.to_s + ". " + r.deadline.month.to_s + ". " + (r.deadline.year. - 2000).to_s end %></td>
