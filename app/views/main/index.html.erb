@@ -4,4 +4,14 @@
 	Klicken Sie für weitere Informationen auf 
 	"<%= link_to "Lehrer", teachers_path %>" 
 	oder "<%= link_to "Ressorts", departments_path %>".</p>
+	
+<% if admin? %>
+<h1>Bugs / To Do </h1>
+<ul>
+	<li>Jobs show. Evtl pro Ressort </li>
+</ul>
+
+
+
+<% end %>
 </article>

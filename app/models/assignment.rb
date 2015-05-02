@@ -16,4 +16,15 @@
 class Assignment < ActiveRecord::Base
   
   belongs_to :department
-end
+  
+  def customdate
+    deadline.day.to_s + '.' + deadline.month.to_s + '.' + (deadline.year-2000).to_s
+  end
+  
+  def self.import(file)
+    CSV.foreach(file.path, headers: :true) do |row|
+      Assignment.create! row.to_hash
+      end #do
+  end #def
+  
+end #class

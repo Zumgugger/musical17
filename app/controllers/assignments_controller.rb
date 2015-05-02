@@ -51,6 +51,11 @@ class AssignmentsController < ApplicationController
       format.json { head :no_content }
     end #do
   end #destroy
+  
+  def import
+    Assignment.import(params[:file])
+    redirect_to assignments_path
+  end #import
 
 
   private

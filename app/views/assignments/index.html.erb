@@ -10,7 +10,7 @@
       <th><%= link_to "Ressort"%></th>
       <th><%= link_to "Kompetenz?"%></th>
       <th><%= link_to "Verantwortung?"%></th>
-      <th><%= link_to "Job erstellt am"%></th>
+      <th><%= link_to "erstellt am"%></th>
       <th><%= link_to "Deadline" %></th>
       <th>Löschen</th>
     </thead>
@@ -23,14 +23,28 @@
 			<td><%= best_in_place assignment, :competence?, :type => :checkbox, :collection => @checkbox %></td>
 			<td><%= best_in_place assignment, :responsibility?, :type => :checkbox, :collection => @checkbox %></td>
 			<td><%= assignment.created_at.day.to_s  + "." + assignment.created_at.month.to_s + "." + (assignment.created_at.year - 2000).to_s %></td>
-			<td><%= best_in_place assignment, :deadline, :type => :date %></td>			
+			<td><%= best_in_place assignment, :deadline, :type => :date, :display_as => :customdate%></td>			
 			<td><%= link_to "Löschen", assignment_path(assignment.id), :method => 'delete'%></td>
 	 </tr>  
      <% end %>
   </table>
   <%= link_to "Neu", assignments_path, :method => 'post'%>
 
+
+<div id="import" class="maindiv">
+	
+	<h2>
+		Jobs aus CSV Datei importieren
+	</h2>
+	<%= form_tag import_assignments_path, multipart: true do %>
+	  <%= file_field_tag :file%>
+	  <%= submit_tag "Importieren"%>
+	<%end%>
+</div>	
+<div class="maindiv">
 <% end %>
+
+
 
 <% unless admin? %>
 <p> Diese Seite ist nur zum Administrieren </p>

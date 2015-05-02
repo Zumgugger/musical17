@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
 
 
-  get 'assignments/index'
-
-  get 'assignment/index'
-
   get 'main/index'
+  
+
 
 resources :departments, :teachers, :functions, :assignments, :sessions
+
+resources :assignments do 
+  collection {post :import }
+end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

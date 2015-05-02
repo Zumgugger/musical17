@@ -44,5 +44,6 @@ gem 'rails_12factor', group: :production
 gem 'best_in_place', :git => 'https://github.com/aaronchi/best_in_place.git'
 gem 'annotate'
 gem 'jquery-ui-rails'
+gem 'roo'
 
 ruby "2.1.4"
