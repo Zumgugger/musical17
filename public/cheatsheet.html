@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<title>cheatsheet</title>
+
+    </head>
+    <body>
+    	<a href="./.."><h1>
+    	Back
+    	</h1></a>
+		<h1>Git</h1>
+			<ol>
+				<li>Repository in github anlegen (bunticklicki mit Maus. mit Shell??) mit Name "name"</li>
+				<li>Die Url des Reps gleich kopieren. Gibt so was wie https://github.com/zumgugger/name</li>
+				<li>Shell</li>
+				<li>cd to/the/repository-to-upload-to-github</li>
+				<li>git init</li>
+				<li>git add . #fügt das gesamte Verzeichnis hinzu</li>
+				<li>git commit -am 'initial commit' #erstellt eine Versionskontrolle lokal</li>
+				<li>git remote add origin /pfad/zu/repository-to-upload-to-github</li>
+				<li>git push origin master</li>
+			</ol>
+			<ul>
+				<li>git branch #zeigt alle zweige an</li>
+				<li>git push 'zweig' fügt den Zweig auf github hinzu </li>
+			</ul>
+			
+		<h1>Heroku</h1>
+		<p>ein app auf Heroku laufen lassen</p>
+			<ol>
+				<li>RAILS_ENV=production bundle exec rake assets:precompile #Precompiled assets</li>
+				<li>in config/environments/production.rb set config.assets.compile = true  </li>
+				<li>in Gemfile 
+					<ul>
+						<li>gem 'sqlite3', :group => [:test, :development]</li>
+						<li>gem 'pg', :group => [:production]</li>
+						<li>gem 'rails_12factor', :group => [:production]</li>
+					</ul>
+				</li>
+				<li>bundle install</li>
+				<li>in config/database.yaml 
+					<ul>
+						<li>production:</li>
+						<li>adapter: postgresql</li>
+						<li>encoding: unicode</li>
+						<li>database: irgendeinedatenbank </li>
+						<li>username: irgendeinuser </li>
+					</ul>production:
+				</li>
+				<li>git add .</li>
+				<li>git commit -am 'precompiled assets, database for heroku'</li>
+				<li>git push heroku master</li>
+				<li>heroku run rake db:migrate</li>
+				
+				 
+ 
+
+			</ol>
+		<h1>Datenbanken von Heroku lokal sichern und umgekehrt</h1>
+		<h2>Heroku > Lokal</h2>
+			<ol>
+				<li>heroku addons:add pgbackups</li>
+				<li>(im Verzeichnis) heroku pgbackups:capture</li>
+				<li>curl -o irgendeinname.dump `heroku pgbackups:url` #lädt mit curl das letzte Backup ins Verzeichnis und gibt ihm den Namen irgendeinname.dump</li>
+				<li>pg_restore --verbose --clean --no-acl --no-owner -h localhost -U irgendeinuser -d irgendeinedatenbank irgendeinname.dump</li>
+			</ol>
+		<h2>Lokal > Heroku</h2>
+			<ol>
+				<li> PGPASSWORD=irgendeinpasswort pg_dump -Fc --no-acl --no-owner -h localhost -U irgendeinuser irgendeinedatenbank > mydb.dump #macht aus der Datenbank "irgendeinedatenbank ein File mydb.dump im Verzeichnis</li>
+				<li>Dann muss die Datei auf einem Server im Web zur Verfügung gestellt werden zB. auf Dropbox. Sicherstellen, dass die Datei freigegeben ist! </li>
+				<li>heroku pgbackups:restore HEROKU_POSTGRESQL_BROWN_URL 'https://dropbox-komplizierte/downloadadresse'  #die Adresse per Rechtsklick und link speichern kopieren und mit singlequotes in die eingabe kopieren.</li>
+			</ol>
+		<h1>Setup Postgresql</h1>
+			<ol>
+				<li>download mit klick installer wichtig!</li>
+				<li>mit pgAdminIII user und datenbank einrichten</li>
+				<li> gemfile und config/database.yaml anpassen</li>
+				<li>mit pgAdminII den postgres server starten</li>
+				<li>im verzeichnis: rake db:migrate</li>
+				<li>fertig.</li>
+				<li>(falls postgres falsch/anders installiert wurde: sudo apt-get --purge remove postresql oder wenn alles nichts mehr hilft: google suche "remove postgres manually"). Rechner neu starten!</li>
+			</ol>
+	</body>
+    
+    
+    
+
+</html>
+<style>
+	* {
+		background-color: black;
+		color:#51E815;
+		font-family: verdana;
+		
+	}
+</style>
