@@ -17,12 +17,7 @@
     <% @assignments.each do |assignment| %>
     
       <tr class=<%= cycle('odd', 'even')%>>
-      		<td><% if assignment.name %>
-      			<%= link_to assignment.name, assignment_path(assignment.id)%>
-      			<%else%>
-      			<%= best_in_place assignment, :name%>
-      			<%end%>
-      		</td>
+      		<td><%= best_in_place assignment, :name%></td>
       		<td><%= best_in_place assignment, :text %></td>
 			<td><%= best_in_place assignment, :department_id, :type => :select, :collection => @collection %></td>
 			<td><%= best_in_place assignment, :competence?, :type => :checkbox, :collection => @checkbox %></td>
