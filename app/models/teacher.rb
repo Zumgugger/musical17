@@ -33,7 +33,6 @@ class Teacher < ActiveRecord::Base
     end
     
     validates_presence_of :name
-    validates_uniqueness_of :token
     
     #EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9._%+-]+\.[a-z]{2,4}\Z/i
     #validates :email, :presence => true,

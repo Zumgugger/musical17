@@ -16,13 +16,13 @@ class TeachersController < ApplicationController
   end #new
 
   def create
-    @teacher = Teacher.new(:last_name => '_Nachname', :first_name => '_Vorname')
+    @teacher = Teacher.new(:last_name => '_Nachname', :first_name => '_Vorname', :password => 'neues Passwort', :password_confirmation => 'neues Passwort')
     respond_to do |format|
       if @teacher.save
         format.html { redirect_to teachers_path, notice: 'Lehrer hinzugefügt' }
         format.json { render action: 'index', status: :created, location: @teacher }
       else
-        format.html { render action: 'index' }
+        format.html { redirect_to teachers_path}
         format.json { render json: @teachers.errors, status: :unprocessable_entity }
       end #if
     end #do

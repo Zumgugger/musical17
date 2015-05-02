@@ -49,7 +49,7 @@
     </tr>
     <% end %>
     
-    <%if admin? %>
+    <%if admin?%>
     <tr class=<%= cycle('odd', 'even')%>>	
     		<td><%= best_in_place teacher, :token %></td>
 			<td><% if teacher.last_name == '_Nachname' %>
@@ -61,6 +61,7 @@
 			<td><% teacher.functions.each do |f|%>
 				<%= best_in_place f, :name%> im Ressort <%= link_to f.department.name, department_path(f.department.id) %><br />
 				<% end %>
+
 			</td>
 			<td><%= best_in_place teacher, :email %></td>
 			<td><%= best_in_place teacher, :email_secret, :type => :checkbox, :collection => ["Nein", "Ja"] %></td>
