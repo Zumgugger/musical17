@@ -20,7 +20,11 @@
 				<%= link_to department.name, department_path(department.id)%>
 				<% end %>
 			<td><% department.functions.each do |f| %>
+				<% if f.teacher && f.teacher.name %>
 				<%= link_to f.teacher.name, teacher_path(f.teacher.id) %>
+				<%else %>
+				Noch vakant
+				<% end %>
 				<% end %>
 				</td>
 			<td><% if admin? %>

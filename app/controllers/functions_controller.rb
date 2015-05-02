@@ -16,6 +16,7 @@ class FunctionsController < ApplicationController
   end #new
 
   def create
+    @teacher = Teacher.first
     @function = Function.new(:name => '_neue Funktion')
     respond_to do |format|
       if @function.save
