@@ -23,13 +23,17 @@
 	
 	<h2>Verantwortlichkeiten</h2>
 	<% @responsibilites.each do |r| %>
+	<li>
 	<%= if r.department == @department then link_to r.text, assignments_path end %>
 	<% end %>
+	</li>
 
 	<h2>Kompetenzen</h2>
 	<% @competences.each do |c| %>
+	<li>
 	<%= if c.department == @department then link_to c.text, assignments_path end %>
 	<% end %>
+	</li>
 	
 	<h2>Notizen (Öffentlich bearbeitbar)</h2>
 	<%= best_in_place @department, :notes, :type => :textarea %>	
